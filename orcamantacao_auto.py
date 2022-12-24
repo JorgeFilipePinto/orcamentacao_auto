@@ -2,4 +2,3 @@ from openpyxl import workbook, load_workbook                    #Importação do
 
 x = load_workbook('orcamentacao_auto.xlsx')                     #
 xs = x.active
-print(xs)
