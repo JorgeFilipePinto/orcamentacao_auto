@@ -16,12 +16,15 @@ print(data_base)
 
 
 #apresentação do pré folheto em terminal
-print('_____________________________________________________________________________')
-print('|                                                                            |')
-print('|                Escola Superior de Gestão e Tecnologia de Lamego            |')
-print('|----------------------------------------------------------------------------|')
-print('|                                 Orçamento                                  |')
-print('|----------------------------------------------------------------------------|')
+print("""
+_____________________________________________________________________________
+|                                                                            |
+|                Escola Superior de Gestão e Tecnologia de Lamego            |
+|----------------------------------------------------------------------------|
+|                                 Orçamento                                  |
+|----------------------------------------------------------------------------|
+""")
+
 print('|    Item1                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
@@ -30,7 +33,7 @@ print('|    Item2                                               ', Variavel,    
 print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item                                                ', Variavel,     '  |')
+print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
 print('|    Item2                                               ', Variavel,     '  |')
