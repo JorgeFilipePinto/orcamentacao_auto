@@ -22,27 +22,34 @@ for i in dados:
 #Quando o utilizador inserir o valor o mesmo é guardado numa variavel correspondente
 
 selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
-artigos = []
+artigos = {}
 while selec != 0:
 
     if selec == 1:
-        artigos.apped()
-    
+        ciclo = int(input('Quantos artigos vai inserir?'))
+        if ciclo != 0:
+            for i in range(ciclo):  
+                prod = input('Nome)')
+                qua = int(input('Quantidade'))
+                artigos[prod] = qua
+                print(artigos)
+        selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
     elif selec == 2:
         print(artigos)
+        selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
 
-    elif selec == 0:
-        print(artigos)
-
-    selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
 print("""
-_____________________________________________________________________________
-|                                                                            |
-|                Escola Superior de Gestão e Tecnologia de Lamego            |
-|----------------------------------------------------------------------------|
-|                                 Orçamento                                  |
-|----------------------------------------------------------------------------|
-""")
+    _____________________________________________________________________________
+    |                                                                            |
+    |                Escola Superior de Gestão e Tecnologia de Lamego            |
+    |----------------------------------------------------------------------------|
+    |                                 Orçamento                                  |
+    |----------------------------------------------------------------------------|
+    """)
+
+for k,v in artigos.items():
+    print(k,'                                                              ', v )
+ 
 
 #print('|    Item2                                               ', Variavel,     '  |')
 #print('|                                                                            |')
