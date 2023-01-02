@@ -1,1 +1,10 @@
-{'Nome': 'serra','Preço': '15€'}
+[
+    {
+        "Nome": "serra",
+        "Preço": 15"
+    },
+    {
+        "Nome": "Alicate",
+        "Preço" 20    
+    }
+]

@@ -1,9 +1,8 @@
-# import jason file, para pré enchimendo da nossa base de dados, utilizar o PANDAS
 import json
 
-with open('dados.json', 'r') as f:
-    data_base = json.load(f)
-print(data_base)
+with open('dados.json') as data_base:
+    dados = json.load(data_base)
+print(dados)
 
 #apresentação dos items desponiveis
 
@@ -16,36 +15,37 @@ print(data_base)
 
 
 #apresentação do pré folheto em terminal
-print("""
-_____________________________________________________________________________
-|                                                                            |
-|                Escola Superior de Gestão e Tecnologia de Lamego            |
-|----------------------------------------------------------------------------|
-|                                 Orçamento                                  |
-|----------------------------------------------------------------------------|
-""")
 
-print('|    Item1                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|    Item2                                               ', Variavel,     '  |')
-print('|                                                                            |')
-print('|                                                                            |')
-print('|                                                Total S/ IVA:', Variavel, ' |')
-print('|                                                         IVA:', Variavel, ' |')
-print('|                                               Total a Pagar:', Variavel, ' |')
-print('|____________________________________________________________________________|')
+#print("""
+#_____________________________________________________________________________
+#|                                                                            |
+#|                Escola Superior de Gestão e Tecnologia de Lamego            |
+#|----------------------------------------------------------------------------|
+#|                                 Orçamento                                  |
+#|----------------------------------------------------------------------------|
+#""")
+
+#print('|    Item1                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|    Item2                                               ', Variavel,     '  |')
+#print('|                                                                            |')
+#print('|                                                                            |')
+#print('|                                                Total S/ IVA:', Variavel, ' |')
+#print('|                                                         IVA:', Variavel, ' |')
+#print('|                                               Total a Pagar:', Variavel, ' |')
+#print('|____________________________________________________________________________|')
 
 
 
