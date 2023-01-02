@@ -1,6 +1,6 @@
-import json
+import json                                                             #Importação da biblioteca JSOM
 
-with open('dados.json', encoding='utf-8') as data_base:
+with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
     dados = json.load(data_base)
 
 
