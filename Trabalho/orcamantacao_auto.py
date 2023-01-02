@@ -1,11 +1,11 @@
 import json
 
+
 with open('dados.json') as data_base:
     dados = json.load(data_base)
 print(dados)
 
 #apresentação dos items desponiveis
-
 
 
 #criação de segunda base de dados para acumulação de items adquiridos
