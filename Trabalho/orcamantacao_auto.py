@@ -3,9 +3,17 @@ import json
 
 with open('dados.json', encoding='utf-8') as data_base:
     dados = json.load(data_base)
-print(dados)
 
-#apresentação dos items desponiveis
+
+print("""
+   Produtos da lista
+_______________________
+ Código           Name
+""")
+
+
+for i in dados:
+    print(' ', i['Código'], '           ', i['Name'])
 
 
 #criação de segunda base de dados para acumulação de items adquiridos
@@ -27,29 +35,15 @@ while selec != 0:
         print(artigos)
 
     selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
-#print("""
-#_____________________________________________________________________________
-#|                                                                            |
-#|                Escola Superior de Gestão e Tecnologia de Lamego            |
-#|----------------------------------------------------------------------------|
-#|                                 Orçamento                                  |
-#|----------------------------------------------------------------------------|
-#""")
+print("""
+_____________________________________________________________________________
+|                                                                            |
+|                Escola Superior de Gestão e Tecnologia de Lamego            |
+|----------------------------------------------------------------------------|
+|                                 Orçamento                                  |
+|----------------------------------------------------------------------------|
+""")
 
-#print('|    Item1                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
-#print('|    Item2                                               ', Variavel,     '  |')
 #print('|    Item2                                               ', Variavel,     '  |')
 #print('|                                                                            |')
 #print('|                                                                            |')
