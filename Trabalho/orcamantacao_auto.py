@@ -1,7 +1,7 @@
 import json
 
 
-with open('dados.json') as data_base:
+with open('dados.json', encoding='utf-8') as data_base:
     dados = json.load(data_base)
 print(dados)
 
@@ -13,9 +13,20 @@ print(dados)
 # como fonte de apresentação do nome na input do utilizador
 #Quando o utilizador inserir o valor o mesmo é guardado numa variavel correspondente
 
+selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
+artigos = []
+while selec != 0:
 
-#apresentação do pré folheto em terminal
+    if selec == 1:
+        artigos.apped()
+    
+    elif selec == 2:
+        print(artigos)
 
+    elif selec == 0:
+        print(artigos)
+
+    selec = int(input('Novo: 1, Editar: 2, Sair: 0'))
 #print("""
 #_____________________________________________________________________________
 #|                                                                            |
@@ -46,18 +57,3 @@ print(dados)
 #print('|                                                         IVA:', Variavel, ' |')
 #print('|                                               Total a Pagar:', Variavel, ' |')
 #print('|____________________________________________________________________________|')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#exportar para PDF o orçamento possivelmente com o PANDAS
