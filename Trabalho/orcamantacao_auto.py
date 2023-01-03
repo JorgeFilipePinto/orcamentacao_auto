@@ -38,28 +38,35 @@ for i in dados:
 
 artigos = {}
 mn1 = 0
+
 while mn1 != 4:
     print('Menu principal\n')
     menu()
     mn1 = int(input('Qual a sua opção\n'))
+
     if mn1 == 1:
         print('Inserir novo artigo no orçamento\n')
         mn1_1 = 0
+
         while mn1_1 != 3:
             menu1_1()
             mn1_1 = int(input('Qual a sua opção\n'))
+
             if mn1_1 == 1:
                 print('Inserir artigo único\n')
                 prod = input('Nome)')
                 qua = int(input('Quantidade'))
                 artigos[prod] = qua
                 print('Artigo inserido com sucesso\n')
+
             elif mn1_1 == 2:
                 print('Inserir artigos múltiplos\n')
                 quantidade_items = 0
                 quantidade_items = int(input('Quantos artigos deseja inserir?'))
                 contagem = 1
                 continuacar = 0
+
+
                 while quantidade_items > 0 and continuacar != 2:  
                     print('Artigo', contagem, '\n')
                     prod = input('Nome)')
@@ -68,22 +75,26 @@ while mn1 != 4:
                     print('Inserido com sucesso\n')
                     quantidade_items = quantidade_items - 1
                     contagem = contagem + 1
-                    if continuacar != 2:  
+
+                    if continuacar != 2 and quantidade_items != 0:  
                         mncont()
                         continuacar = int(input('Deseja continuar?'))
-                print('Artigos inseridos com sucesso')
+                print(contagem, 'Artigos inseridos com sucesso\n')
+
     elif mn1 == 2:
         print('Editar artigos do orçamento\n')
         mn1_2 = 0
+
         while mn1_2 != 2:
             menu1_2()
             mn1_2 = int(input('Qual a sua opção\n'))
+
             if mn1_2 == 1:
                 print('Editar artigos\n')
                 print(artigos)
+
     elif mn1 == 3:
         print('Terminar e emitir orçamento\n')
-        iva = float(input('Qual o valor IVA a faturar?'))
         print("""
             _____________________________________________________________________________
             |                                                                            |
@@ -95,9 +106,9 @@ while mn1 != 4:
         count = 0
         for k,v in artigos.items():
             count = count + v
-            print('     ', k,'                                                            ', v )
+            print('     ', k,'                                                            ', v, '€' )
 
-        print('                                                Total S/ IVA:', count)
-        print('                                                         IVA:', iva)
-        print('                                               Total a Pagar:', count * iva)
+        print('                                                Total S/ IVA:', count, '€')
+        print('                                                         IVA:', '0.23€')
+        print('                                               Total a Pagar:', count * 1.23, '€')
 

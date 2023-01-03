@@ -1,37 +1,37 @@
 [
     {
-        "Name": "serra1",
-        "Price": 15,
+        "Name": "Item1",
+        "Price": 100,
         "Código": 1111
     },
     {
-        "Name": "Serra2",
-        "Price": 15,
+        "Name": "Item2",
+        "Price": 100,
         "Código": 2222
     },
     {
-        "Name": "Serra3",
-        "Price": 20,
+        "Name": "Item3",
+        "Price": 100,
         "Código": 3333
     },
     {
-        "Name": "Serra4",
-        "Price": 30,
+        "Name": "Item4",
+        "Price": 100,
         "Código": 4444
     },
     {
-        "Name": "Serra5",
-        "Price": 25,
+        "Name": "Item",
+        "Price": 100,
         "Código": 5555
     },
     {
-        "Name": "serra6",
-        "Price": 15,
+        "Name": "Item",
+        "Price": 100,
         "Código": 6666
     },
     {
-        "Name": "serra7",
-        "Price": 15,
+        "Name": "Item",
+        "Price": 100,
         "Código": 7777
     }
 ]
