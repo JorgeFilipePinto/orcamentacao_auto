@@ -3,6 +3,7 @@ import json                                                             #Importa
 with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
     dados = json.load(data_base)
 
+#Menus
 def menu():
     print('1 - Inserir novo artigo no orçamento')
     print('2 - Editar artigos do orçamento')
@@ -23,7 +24,7 @@ def mncont():
     print('2 - Não')
 
 
-
+#Apresentação de todos os elementos da base de dados
 print("""
    Produtos da lista
 ___________________________
