@@ -2,66 +2,36 @@
     {
         "Name": "serra1",
         "Price": 15,
-        "Código": 11111111
+        "Código": 1111
     },
     {
         "Name": "Serra2",
         "Price": 15,
-        "Código": 11111112
+        "Código": 2222
     },
     {
         "Name": "Serra3",
         "Price": 20,
-        "Código": 11111113
+        "Código": 3333
     },
     {
         "Name": "Serra4",
         "Price": 30,
-        "Código": 11111114
+        "Código": 4444
     },
     {
         "Name": "Serra5",
         "Price": 25,
-        "Código": 11111115
+        "Código": 5555
     },
     {
         "Name": "serra6",
         "Price": 15,
-        "Código": 11111116
+        "Código": 6666
     },
     {
         "Name": "serra7",
         "Price": 15,
-        "Código": 11111117
-    },
-    {
-        "Name": "serra8",
-        "Price": 15,
-        "Código": 11111118
-    },
-    {
-        "Name": "serra9",
-        "Price": 15,
-        "Código": 11111119
-    },
-    {
-        "Name": "serra10",
-        "Price": 15,
-        "Código": 11111121
-    },
-    {
-        "Name": "serra11",
-        "Price": 15,
-        "Código": 11111122
-    },
-    {
-        "Name": "serra12",
-        "Price": 15,
-        "Código": 11111123
-    },
-    {
-        "Name": "serra13",
-        "Price": 15,
-        "Código": 11111124
+        "Código": 7777
     }
 ]
