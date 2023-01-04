@@ -12,7 +12,6 @@ ___________________________
 for i in dados:
     print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
 
-
 orcamento = []
 num_artigo = 1
 contagem = 0
