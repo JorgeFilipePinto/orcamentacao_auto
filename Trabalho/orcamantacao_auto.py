@@ -40,6 +40,9 @@ def menu_continuar():#Menu confirmar inserir artigos multiplos
     print('1 - Sim')
     print('2 - Não') 
 
+def sair():          #Sair do menu de edição
+    print('1 - Sim')
+    print('2 - Não')
 
 while mn1 != 4:
     print('Menu principal\n')
@@ -125,22 +128,38 @@ while mn1 != 4:
         mn1_2 = 0
 
         while mn1_2 != 2:
-            menu1_2()
-            mn1_2 = int(input('Qual a sua opção\n'))
-
-            if mn1_2 == 1:
-                print('Editar artigos\n')
-                print("""
+            print('Editar artigos\n')
+            print("""
                     Produtos da lista
                 ___________________________
                 Código    Name       Preço
                 """)
+            for i in orcamento:         #Print dos elementos do orçamento
+                print(i['Código'],'   ', i['Produto'], '                           ', i['Quantidade'], '                            ', i['Preço'], '€\n')
 
-                for i in orcamento:
-                    print(i['Código'],'   ', i['Produto'], '                                                        ', i['Preço'], '€\n')
+            menu1_2()
+            mn1_2 = int(input('Qual a sua opção\n'))
+
+            if mn1_2 == 1:
                 editar_produto = int(input('Insira o código do produto que pretende alterar.'))
                 sair_editor = 0
-                while sair_editor != 0:
+                while sair_editor != 1:
+                    for edit in orcamento:
+                        if editar_produto == edit['Código']:
+                            print(edit['Código']) 
+                            novo_produto = int(input('Insira o novo produto a substituir.'))
+                            for i in dados:
+                                if novo_produto == i['Code']:
+                                    print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
+                                    quantidade = int(input('Qual a quantidade que deseja?\n'))
+                                    edit['Quantidade'] = quantidade
+                                    edit['Código'] = i['Code']
+                                    edit['Produto'] = i['Name']
+                                    edit['Preço'] = (quantidade * i['Price'])
+                    else:
+                        print('O código que introduziu não existe no orçamento.')
+                        break
+                   
 
 
 
