@@ -18,7 +18,7 @@ num_artigo = 1
 contagem = 0
 soma = 0
 preco = 0
-mn1 = 0
+user_input_1 = 0
 
 
 def menu():         #Menu principal
@@ -44,25 +44,25 @@ def sair():          #Sair do menu de edição
     print('1 - Sim')
     print('2 - Não')
 
-while mn1 != 4:
+while user_input_1 != 4:
     print('Menu principal\n')
     menu()
-    mn1 = int(input('Qual a sua opção\n'))
+    user_input_1 = int(input('Qual a sua opção\n'))
 
-    if mn1 == 1:    #Inserir artigos
+    if user_input_1 == 1:    #Inserir artigos
         print('Inserir novo artigo no orçamento\n')
         num_artigo = 1
         contagem = 0
         continuar = 0
         soma = 0
         preco = 0
-        mn1_1 = 0
+        user_input_1_1 = 0
 
-        while mn1_1 != 3:
+        while user_input_1_1 != 3:
             menu1_1()
-            mn1_1 = int(input('Qual a sua opção\n'))
+            user_input_1_1 = int(input('Qual a sua opção\n'))
 
-            if mn1_1 == 1:      #Inserir artigo único
+            if user_input_1_1 == 1:      #Inserir artigo único
                 print('Inserir artigo único\n')
                 print('Artigo', num_artigo, '\n')
                 inserir_produto = int(input('Introduza o código do produto desejado.\n'))
@@ -83,7 +83,7 @@ while mn1 != 4:
                         print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
                         num_artigo = num_artigo + 1
 
-            elif mn1_1 == 2:    #Inserir multi-artigos
+            elif user_input_1_1 == 2:    #Inserir multi-artigos
                 print('Inserir artigos múltiplos\n')
                 quantidade_items = 0
                 continuar = 0
@@ -123,11 +123,11 @@ while mn1 != 4:
 
                 print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
 
-    elif mn1 == 2:  #Editar orçamento
+    elif user_input_1 == 2:  #Editar orçamento
         print('Editar artigos do orçamento\n')
-        mn1_2 = 0
+        user_input_1_2 = 0
 
-        while mn1_2 != 2:
+        while user_input_1_2 != 2:
             print('Editar artigos\n')
             print("""
                     Produtos do orçamento
@@ -138,9 +138,9 @@ while mn1 != 4:
                 print(i['Código'],'   ', i['Produto'], '                           ', i['Quantidade'], '                            ', i['Preço'], '€\n')
 
             menu1_2()
-            mn1_2 = int(input('Qual a sua opção\n'))
+            user_input_1_2 = int(input('Qual a sua opção\n'))
 
-            if mn1_2 == 1:
+            if user_input_1_2 == 1:
                 editar_produto = int(input('Insira o código do produto que pretende alterar.'))
                 sair_editor = 0
                 while sair_editor != 1:
@@ -168,7 +168,7 @@ while mn1 != 4:
                         break
 
 
-    elif mn1 == 3:  #Print terminal do orçamento
+    elif user_input_1 == 3:  #Print terminal do orçamento
         iva = float(input('Qual o valor do IVA?'))
         iva = iva/100
         print('Terminar e emitir orçamento\n')
