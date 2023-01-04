@@ -165,7 +165,6 @@ while user_input_1 != 4:
                         print('O código que introduziu não existe no orçamento.')
                         break
 
-
     elif user_input_1 == 3:  #Print terminal do orçamento
         iva = float(input('Qual o valor do IVA?'))
         iva = iva/100
