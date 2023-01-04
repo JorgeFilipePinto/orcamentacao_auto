@@ -95,6 +95,8 @@ while mn1 != 4:
                 print(artigos)
 
     elif mn1 == 3:
+        iva = float(input('Qual o valor do IVA?'))
+        iva = iva/100
         print('Terminar e emitir orçamento\n')
         print("""
             _____________________________________________________________________________
@@ -108,8 +110,9 @@ while mn1 != 4:
         for k,v in artigos.items():
             count = count + v
             print('     ', k,'                                                            ', v, '€' )
-
+        custo_iva = (count * iva)
+        total = (count + custo_iva)
         print('                                                Total S/ IVA:', count, '€')
-        print('                                                         IVA:', '0.23€')
-        print('                                               Total a Pagar:', count * 1.23, '€')
+        print('                                                         IVA:', round(custo_iva,2), '€')
+        print('                                               Total a Pagar:', total, '€')
 

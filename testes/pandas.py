@@ -81,4 +81,3 @@ while mn1 != 4:
         print('                                                Total S/ IVA:', count)
         print('                                                         IVA:', iva)
         print('                                               Total a Pagar:', count * iva)
-
