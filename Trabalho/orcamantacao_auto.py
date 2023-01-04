@@ -3,6 +3,16 @@ import json                                                             #Importa
 with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
     dados = json.load(data_base)
 
+#Apresentação de todos os elementos da base de dados
+print("""
+   Produtos da lista
+___________________________
+ Código    Name       Preço
+""")
+for i in dados:
+    print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+
+
 orcamento = []
 num_artigo = 1
 contagem = 0
@@ -11,36 +21,25 @@ soma = 0
 preco = 0
 mn1 = 0
 
-#Menus
-def menu():
+
+def menu():         #Menu principal
     print('1 - Inserir novo artigo no orçamento')
     print('2 - Editar artigos do orçamento')
     print('3 - Terminar e emitir orçamento')
     print('4 - Sair')
 
-def menu1_1():
+def menu1_1():      #Menu inserir artigos
     print('1 - Inserir artigo único')
     print('2 - Inserir artigos múltiplos')
     print('3 - Voltar ao menu principal')
 
-def menu1_2():
+def menu1_2():      #Menu editar artigos
     print('1 - Editar')
     print('2 - Voltar ao menu principal')
 
-def menu_continuar():
+def menu_continuar():#Menu confirmar inserir artigos multiplos
     print('1 - Sim')
     print('2 - Não') 
-
-
-#Apresentação de todos os elementos da base de dados
-print("""
-   Produtos da lista
-___________________________
- Código    Name       Preço
-""")
-
-for i in dados:
-    print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
 
 
 while mn1 != 4:
@@ -48,7 +47,7 @@ while mn1 != 4:
     menu()
     mn1 = int(input('Qual a sua opção\n'))
 
-    if mn1 == 1:
+    if mn1 == 1:    #Inserir artigos
         print('Inserir novo artigo no orçamento\n')
         num_artigo = 1
         contagem = 0
@@ -61,7 +60,7 @@ while mn1 != 4:
             menu1_1()
             mn1_1 = int(input('Qual a sua opção\n'))
 
-            if mn1_1 == 1:
+            if mn1_1 == 1:      #Inserir artigo único
                 print('Inserir artigo único\n')
                 print('Artigo', num_artigo, '\n')
                 inserir_produto = int(input('Introduza o código do produto desejado.\n'))
@@ -82,7 +81,7 @@ while mn1 != 4:
                         print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
                         num_artigo = num_artigo + 1
 
-            elif mn1_1 == 2:
+            elif mn1_1 == 2:    #Inserir multi-artigos
                 print('Inserir artigos múltiplos\n')
                 quantidade_items = 0
                 quantidade_items = int(input('Quantos artigos deseja inserir?\n'))
@@ -117,7 +116,7 @@ while mn1 != 4:
                         continuacar = int(input('Deseja continuar?\n'))
                 print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
 
-    elif mn1 == 2:
+    elif mn1 == 2:  #Editar orçamento
         print('Editar artigos do orçamento\n')
         mn1_2 = 0
 
@@ -134,11 +133,10 @@ while mn1 != 4:
                 """)
 
                 for i in orcamento:
-                    print(i['Código'],'   ', i['Produto'], '                                                        ', i['Preço'], '€' )
+                    print(i['Código'],'   ', i['Produto'], '                                                        ', i['Preço'], '€\n')
 
 
-    elif mn1 == 3:
-        print(orcamento)
+    elif mn1 == 3:  #Print terminal do orçamento
         iva = float(input('Qual o valor do IVA?'))
         iva = iva/100
         print('Terminar e emitir orçamento\n')
