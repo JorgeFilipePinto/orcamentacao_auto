@@ -16,7 +16,6 @@ for i in dados:
 orcamento = []
 num_artigo = 1
 contagem = 0
-continuacar = 0
 soma = 0
 preco = 0
 mn1 = 0
@@ -51,7 +50,7 @@ while mn1 != 4:
         print('Inserir novo artigo no orçamento\n')
         num_artigo = 1
         contagem = 0
-        continuacar = 0
+        continuar = 0
         soma = 0
         preco = 0
         mn1_1 = 0
@@ -84,11 +83,10 @@ while mn1 != 4:
             elif mn1_1 == 2:    #Inserir multi-artigos
                 print('Inserir artigos múltiplos\n')
                 quantidade_items = 0
+                continuar = 0
                 quantidade_items = int(input('Quantos artigos deseja inserir?\n'))
 
-
-
-                while quantidade_items > 0 and continuacar != 2:  
+                while quantidade_items > 0 and continuar != 2:  
                     print('Artigo', num_artigo, '\n')
                     inserir_produto = int(input('Introduza o código do produto desejado.\n'))
                     for i in dados:
@@ -111,9 +109,15 @@ while mn1 != 4:
                     num_artigo = num_artigo + 1
                     contagem = contagem + quantidade
                     
-                    if continuacar != 2 and quantidade_items != 0:  
+                    while continuar != 2 and quantidade_items != 0:  
                         menu_continuar()
-                        continuacar = int(input('Deseja continuar?\n'))
+                        continuar = int(input('Deseja continuar?\n'))
+                        if continuar == 1 or continuar == 2:
+                            break
+                        else:
+                            print('Por favor introduza uma opção válida!\n')
+                        
+
                 print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
 
     elif mn1 == 2:  #Editar orçamento
@@ -134,6 +138,12 @@ while mn1 != 4:
 
                 for i in orcamento:
                     print(i['Código'],'   ', i['Produto'], '                                                        ', i['Preço'], '€\n')
+                editar_produto = int(input('Insira o código do produto que pretende alterar.'))
+                sair_editor = 0
+                while sair_editor != 0:
+
+
+
 
 
     elif mn1 == 3:  #Print terminal do orçamento
@@ -147,9 +157,10 @@ while mn1 != 4:
             |----------------------------------------------------------------------------|
             |                                 Orçamento                                  |
             |----------------------------------------------------------------------------|
+            Código:      Nome:                         Quantidade:           Preço:
             """)
         for i in orcamento:
-            print(i['Código'],'   ', i['Produto'], '                                                        ', i['Preço'], '€' )
+            print(i['Código'],'   ', i['Produto'], '                                         ', i['Quantidade'], '               ', i['Preço'], '€\n\n' )
         
         
         
