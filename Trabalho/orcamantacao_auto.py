@@ -19,7 +19,6 @@ soma = 0
 preco = 0
 user_input_1 = 0
 
-
 def menu():         #Menu principal
     print('1 - Inserir novo artigo no orçamento')
     print('2 - Editar artigos do orçamento')
