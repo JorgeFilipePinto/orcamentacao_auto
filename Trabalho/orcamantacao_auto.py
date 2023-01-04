@@ -130,7 +130,7 @@ while mn1 != 4:
         while mn1_2 != 2:
             print('Editar artigos\n')
             print("""
-                    Produtos da lista
+                    Produtos do orçamento
                 ___________________________
                 Código    Name       Preço
                 """)
@@ -146,7 +146,14 @@ while mn1 != 4:
                 while sair_editor != 1:
                     for edit in orcamento:
                         if editar_produto == edit['Código']:
-                            print(edit['Código']) 
+                            print(edit['Código'])
+                            print("""
+                            Produtos da lista
+                            ___________________________
+                            Código    Name       Preço
+                            """)
+                            for i in dados:
+                                print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
                             novo_produto = int(input('Insira o novo produto a substituir.'))
                             for i in dados:
                                 if novo_produto == i['Code']:
@@ -159,10 +166,6 @@ while mn1 != 4:
                     else:
                         print('O código que introduziu não existe no orçamento.')
                         break
-                   
-
-
-
 
 
     elif mn1 == 3:  #Print terminal do orçamento
