@@ -1,4 +1,5 @@
 #gestão de produtos
+#evitar inseriri códigos repetidos
 #criar novos orçamentos editar eliminar e guardar em json
 #guardar com datetime
 #https://zetcode.com/python/fstring/
@@ -126,7 +127,7 @@ while user_input_1 != 4:
                                     print('Por favor introduza uma opção válida!\n')
 
                             print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
-                            
+
 
     elif user_input_1 == 2:  #Editar orçamento
         print('Editar artigos do orçamento\n')
@@ -192,7 +193,8 @@ while user_input_1 != 4:
         
         custo_iva = (soma * iva)
         total = (soma + custo_iva)
-        print('                                                Total S/ IVA:', soma, '€')
+        print('                                                Total S/ IVA:', round(soma,2), '€')
         print('                                                         IVA:', round(custo_iva,2), '€')
-        print('                                               Total a Pagar:', total, '€')
+        print('                                               Total a Pagar:', round(total,2), '€')
+
 
