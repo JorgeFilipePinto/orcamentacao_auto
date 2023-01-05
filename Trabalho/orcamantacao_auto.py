@@ -1,3 +1,11 @@
+#gestão de produtos
+#criar novos orçamentos editar eliminar e guardar em json
+#guardar com datetime
+#https://zetcode.com/python/fstring/
+
+
+
+
 import json                                                             #Importação da biblioteca JSOM
 
 with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
@@ -34,7 +42,7 @@ def menu1_2():      #Menu editar artigos
     print('1 - Editar')
     print('2 - Voltar ao menu principal')
 
-def menu_continuar():#Menu confirmar inserir artigos multiplos
+def menu_continuar():   #Menu confirmar inserir artigos multiplos
     print('1 - Sim')
     print('2 - Não') 
 
@@ -102,24 +110,23 @@ while user_input_1 != 4:
                             artigos['Quantidade'] = quantidade
                             artigos['Preço'] = (quantidade * i['Price'])
                             orcamento.append(artigos)
-                            print('Inserido', quantidade, 'com sucesso, no total de:', preco, '€\n') 
-                        else:
-                            continue 
+                            print('Inserido', quantidade, 'com sucesso, no total de:', preco, '€\n')
+                            quantidade_items = quantidade_items - 1
+                            num_artigo = num_artigo + 1
+                            contagem = contagem + quantidade
+                            
 
-                    quantidade_items = quantidade_items - 1
-                    num_artigo = num_artigo + 1
-                    contagem = contagem + quantidade
-                    
-                    while continuar != 2 and quantidade_items != 0:  
-                        menu_continuar()
-                        continuar = int(input('Deseja continuar?\n'))
-                        if continuar == 1 or continuar == 2:
-                            break
-                        else:
-                            print('Por favor introduza uma opção válida!\n')
-                        
 
-                print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
+                            while continuar != 2 and quantidade_items != 0:
+                                menu_continuar()
+                                continuar = int(input('Deseja continuar?\n'))
+                                if continuar == 1 or continuar == 2:
+                                    break
+                                else:
+                                    print('Por favor introduza uma opção válida!\n')
+
+                            print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
+                            
 
     elif user_input_1 == 2:  #Editar orçamento
         print('Editar artigos do orçamento\n')
