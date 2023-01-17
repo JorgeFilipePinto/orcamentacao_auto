@@ -12,21 +12,21 @@ import json                                                             #Importa
 with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
     dados = json.load(data_base)
 
-#Apresentação de todos os elementos da base de dados
-print("""
-   Produtos da lista
-___________________________
- Código    Name       Preço
-""")
-for i in dados:
-    print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+def inicio():
+    if supervisor == 0:
+        print('1 - Gestão Base de Dados')
+        print('2 - Orçamentos\n')
+    else:
+        print('2 - Orçamentos\n')
 
-orcamento = []
-num_artigo = 1
-contagem = 0
-soma = 0
-preco = 0
-user_input_1 = 0
+def menu_basedados():
+    print("1- Inserir novo artigo")
+    print("2- Editar artigo")
+    print("3- Sair\n")
+
+def menu_save():
+    print('1 - Sim')
+    print('2 - Não')
 
 def menu():         #Menu principal
     print('1 - Inserir novo artigo no orçamento')
@@ -50,6 +50,103 @@ def menu_continuar():   #Menu confirmar inserir artigos multiplos
 def sair():          #Sair do menu de edição
     print('1 - Sim')
     print('2 - Não')
+
+dados_clone = []
+orcamento = []
+num_artigo = 1
+contagem = 0
+soma = 0
+preco = 0
+user_input_1 = 0
+iniciar = 0
+codigo_secreto = 0000
+erro_codigo = 3
+supervisor = 0
+code_supervisor = 11110000
+
+for i in dados:
+    dado_bd = {}
+    #print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+    dado_bd['Code'] = i['Code']
+    dado_bd['Name'] = i['Name']
+    dado_bd['Price'] = i['Price']
+    dados_clone.append(dado_bd)
+
+while iniciar != 2:
+    print('Bem-vindo\n')
+    inicio()
+    iniciar = int(input('Escolha a opção!'))
+    if iniciar == 1:
+        if iniciar == code_supervisor:
+            print('A sua base de dados foi desbloqueada com sucesso.\n')
+            erro_codigo = 3
+            supervisor = 0
+        if iniciar == 1:
+            print('Gestão de Base de Dados!\n')
+            password = int(input('Por favor introduza o código de acesso!'))
+            if password == codigo_secreto:
+                erro_codigo = 3
+                iniciar = 2    
+            else:
+                erro_codigo = erro_codigo - 1   
+                print('O código que introduziu está errado!!\nRestam', erro_codigo, 'Tentativas\n')
+            if erro_codigo == 0:
+                supervisor = 1
+                print('Não tem mais tentativas por favor dirija-se ao seu supervisor.\n')
+
+while iniciar !=3:
+    menu_basedados()
+    iniciar = int(input('Escolha a opção!'))
+    if iniciar == 1:
+        for v in dados_clone:
+            print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
+        
+        bd_code = int(input('Introduza o código do produto.\n'))
+        dado_bd = {}
+        bd_name = input('Introduza o nome do produto.')
+        bd_price = float(input('Introduza o preço do produto.'))
+        dado_bd['Code'] = bd_code
+        dado_bd['Name'] = bd_name
+        dado_bd['Price'] = bd_price
+        dados_clone.append(dado_bd)
+        for ii in dados_clone:
+            print(' ', ii['Code'], '   ', ii['Name'], '   ', ii['Price'], '\n')
+
+    if iniciar == 2:
+        for v in dados_clone:
+            print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
+        
+        edit_code_bd = int(input('Insira o código do produto que pretende alterar.'))
+
+        for i in dados_clone:
+            if edit_code_bd == i['Code']:
+                print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
+                new_code_bd = int(input('Insira o novo produto a substituir.'))
+                new_name_bd = input('Introduza o nome.\n')
+                new_price_bd = int(input('Introduza o preço\n'))
+                i['Code'] = new_code_bd
+                i['Produto'] = new_name_bd
+                i['Price'] = new_price_bd
+
+                    
+menu_save()
+save = int(input('Deseja guardar?'))
+if save == 1:
+    with open("dados.json", "w") as json_file:
+        json.dump(dados_clone, json_file,indent=4)
+
+
+
+#Apresentação de todos os elementos da base de dados
+print("""
+   Produtos da lista
+___________________________
+ Código    Name       Preço
+""")
+for i in dados:
+    print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+
+
 
 while user_input_1 != 4:
     print('Menu principal\n')
