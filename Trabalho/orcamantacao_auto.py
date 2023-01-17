@@ -8,6 +8,7 @@
 
 
 import json                                                             #Importação da biblioteca JSOM
+import datetime
 
 with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
     dados = json.load(data_base)
@@ -31,7 +32,7 @@ def menu_save():
 def menu():         #Menu principal
     print('1 - Inserir novo artigo no orçamento')
     print('2 - Editar artigos do orçamento')
-    print('3 - Terminar e emitir orçamento')
+    print('3 - Guardar / Editar orçamentos')
     print('4 - Sair')
 
 def menu1_1():      #Menu inserir artigos
@@ -50,7 +51,7 @@ def menu_continuar():   #Menu confirmar inserir artigos multiplos
 def sair():          #Sair do menu de edição
     print('1 - Sim')
     print('2 - Não')
-
+index = 0
 dados_clone = []
 orcamento = []
 num_artigo = 1
@@ -64,9 +65,8 @@ erro_codigo = 3
 supervisor = 0
 code_supervisor = 11110000
 
-for i in dados:
+for i in dados: #Colonar dados para dados clone
     dado_bd = {}
-    #print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
     dado_bd['Code'] = i['Code']
     dado_bd['Name'] = i['Name']
     dado_bd['Price'] = i['Price']
@@ -128,6 +128,13 @@ while iniciar !=3:
                 i['Produto'] = new_name_bd
                 i['Price'] = new_price_bd
 
+    if iniciar == 4:
+        code_del= int(input('Introduz o Código do item a deletar: '))
+
+        for i, item in enumerate():
+            if item["Code"] == code_del:
+                del data["items"][i]
+                break
                     
 menu_save()
 save = int(input('Deseja guardar?'))
@@ -271,6 +278,21 @@ while user_input_1 != 4:
                         break
 
     elif user_input_1 == 3:  #Print terminal do orçamento
+        menu_save()
+        save = int(input('Deseja Guardar?'))
+        if save == 1:
+            now = datetime.datetime.now()
+            data = now.strftime('%H:%M:%S %d-%m-%Y')
+            index = index + 1
+            orc_dados = {}
+            orc_dados['Date'] = data
+            orc_dados['Index'] = index
+            orcamento.append(orc_dados)
+            with open("orcamentos.json", "w") as json_file:
+                json.dump(orcamento, json_file,indent=4)
+        else:
+            print('Não guardou o orçamento.')
+
         iva = float(input('Qual o valor do IVA?'))
         iva = iva/100
         print('Terminar e emitir orçamento\n')
