@@ -1,8 +1,8 @@
 [
     {
-        "Code": 1111,
+        "Code": 101111,
         "Name": "Item1",
-        "Price": 101
+        "Price": 100
     },
     {
         "Code": 2222,
@@ -10,9 +10,9 @@
         "Price": 102
     },
     {
-        "Code": 3333,
+        "Code": 3332,
         "Name": "Item3",
-        "Price": 103
+        "Price": 100
     },
     {
         "Code": 4444,
@@ -52,7 +52,11 @@
     {
         "Code": 11000,
         "Name": "Item11",
-        "Price": 100,
-        "Produto": "Item11"
+        "Price": 100
+    },
+    {
+        "Code": 199999,
+        "Name": "Teste4",
+        "Price": 1000.0
     }
 ]
