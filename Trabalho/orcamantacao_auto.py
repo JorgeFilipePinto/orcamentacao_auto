@@ -7,8 +7,10 @@
 import json                                                             #Importação da biblioteca JSOM
 import datetime
 
-with open('dados.json', encoding='utf-8') as data_base:                 #Importação do ficheiro dados.json e codificação dos caracteres
-    dados = json.load(data_base)
+from data_base_manager.data_base_manager import DataBaseManager
+
+db = DataBaseManager('dados.json')
+db.import_dados()
 
 def inicio():
     if supervisor == 0:
@@ -58,6 +60,7 @@ def menu_continuar():   #Menu confirmar inserir artigos multiplos
 def sair():          #Sair do menu de edição
     print('1 - Sim')
     print('2 - Não')
+
 index = 0
 dados_clone = []
 orcamento = []
@@ -73,13 +76,6 @@ supervisor = 0
 code_supervisor = 11110000
 data_save = 1
 
-for i in dados: #Colonar dados para dados clone
-    dado_bd = {}
-    dado_bd['Code'] = i['Code']
-    dado_bd['Name'] = i['Name']
-    dado_bd['Price'] = i['Price']
-    dados_clone.append(dado_bd)
-
 while iniciar != 3:
     print('Bem-vindo\n')
     inicio()
@@ -94,68 +90,47 @@ while iniciar != 3:
             password = int(input('Por favor introduza o código de acesso!'))
             if password == codigo_secreto:
                 erro_codigo = 3
-                iniciar = 2    
+                iniciar = 2
             else:
-                erro_codigo = erro_codigo - 1   
+                erro_codigo = erro_codigo - 1
                 print('O código que introduziu está errado!!\nRestam', erro_codigo, 'Tentativas\n')
             if erro_codigo == 0:
                 supervisor = 1
                 print('Não tem mais tentativas por favor dirija-se ao seu supervisor.\n')
-        while iniciar !=6:
+        while iniciar != 6:
             menu_basedados()
             iniciar = int(input('Escolha a opção!'))
             if iniciar == 1:
-                data_save = 0
-                for v in dados_clone:
-                    print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
-                
-                bd_code = int(input('Introduza o código do produto.\n'))
+                bd_code = input('Introduza o código do produto.\n')
                 dado_bd = {}
                 bd_name = input('Introduza o nome do produto.')
                 bd_price = float(input('Introduza o preço do produto.'))
-                dado_bd['Code'] = bd_code
-                dado_bd['Name'] = bd_name
-                dado_bd['Price'] = bd_price
-                dados_clone.append(dado_bd)
-                for ii in dados_clone:
-                    print(' ', ii['Code'], '   ', ii['Name'], '   ', ii['Price'], '\n')
 
+                db.insert(bd_code, bd_name, bd_price)
+                data_save = 0
+            
             if iniciar == 2:
                 data_save = 0
-                for v in dados_clone:
-                    print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
+                print(db)
                 
-                edit_code_bd = int(input('Insira o código do produto que pretende alterar.'))
+                edit_code_bd = input('Insira o código do produto que pretende alterar.')
+                while not db.check_code(edit_code_bd):
+                    edit_code_bd = input('Insira o código do produto que pretende alterar.')
 
-                for i in dados_clone:
-                    if edit_code_bd == i['Code']:
-                        print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
-                        new_code_bd = int(input('Insira o novo produto a substituir.'))
-                        new_name_bd = input('Introduza o nome.\n')
-                        new_price_bd = int(input('Introduza o preço\n'))
-                        i['Code'] = new_code_bd
-                        i['Name'] = new_name_bd
-                        i['Price'] = new_price_bd
+                new_code_bd = input('Insira o novo produto a substituir.')
+                new_name_bd = input('Introduza o nome.\n')
+                new_price_bd = float(input('Introduza o preço\n'))
+                db.insert(new_code_bd, new_name_bd, new_price_bd)
         ########################################################################################################################################################################
             if iniciar == 3:
-                for v in dados_clone:
-                    print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
-                edit_code_bd = int(input('Insira o código do produto que pretende eliminar.'))
-                for i in dados_clone:
-                    if edit_code_bd == i['Code']:
-                        print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
-                        del i['Code']
-                        del i['Name']
-                        del i['Price']
-                for i in dados_clone:
-                    print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+                print(db)
+                edit_code_bd = input('Insira o código do produto que pretende eliminar.')
+                db.remove(edit_code_bd)
+                print(db)
         ########################################################################################################################################################################
 
-
-
             if iniciar == 4 :
-                for v in dados_clone:
-                    print(' ', v['Code'], '   ', v['Name'], '   ', v['Price'], '\n')
+                print(db)
 
             if iniciar == 5:
                 if data_save == 1: 
@@ -163,16 +138,14 @@ while iniciar != 3:
                     menu_save()
                     save = int(input('Deseja guardar?\n'))
                     if save == 1:
-                        with open("dados.json", "w") as json_file:
-                            json.dump(dados_clone, json_file,indent=4)
+                        db.save()
                         data_save = 1
                 elif data_save == 0:
                     print('Existem alterações que ainda não foram salvas.\n')                   
                     menu_save()
                     save = int(input('Deseja guardar?\n'))
                     if save == 1:
-                        with open("dados.json", "w") as json_file:
-                            json.dump(dados_clone, json_file,indent=4)
+                        db.save()
                         data_save = 1
                 else:
                     continue
@@ -184,21 +157,17 @@ while iniciar != 3:
         print("""
         Produtos da lista
         ___________________________
-        Código    Name       Preço
         """)
-        for i in dados_clone:
-            print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
+        print(db)
 
         if data_save == 0:
             print('Existem alterações que ainda não foram salvas!\n')
             menu_save()
             save = int(input('Deseja guardar?\n'))
             if save == 1:
-                with open("dados.json", "w") as json_file:
-                    json.dump(dados_clone, json_file,indent=4)
+                db.save()
             else:
                 pass
-
 
 
     while user_input_1 != 4:
@@ -222,28 +191,27 @@ while iniciar != 3:
                 if user_input_1_1 == 1:      #Inserir artigo único
                     print('Inserir artigo único\n')
                     print('Artigo', num_artigo, '\n')
-                    inserir_produto = int(input('Introduza o código do produto desejado.\n'))
-                    for i in dados:
-                        if inserir_produto == i['Code']:
-                            print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
-                            quantidade = int(input('Qual a quantidade que deseja?\n'))
-                            preco = quantidade * (i['Price'])
-                            soma = (soma + (quantidade * i['Price']))
-                            contagem = contagem + quantidade
-                            artigos = {}
-                            index = index + 1
-                            artigos['Index'] = index
-                            now = datetime.datetime.now()
-                            data = now.strftime('%H:%M:%S %d-%m-%Y')
-                            artigos['Date'] = data
-                            artigos['Code'] = i['Code']
-                            artigos['Name'] = i['Name']
-                            artigos['Quanti'] = quantidade
-                            artigos['Price'] = (quantidade * i['Price'])
-                            orcamento.append(artigos)
-                            print('Inserido com sucesso.\n')
-                            print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
-                            num_artigo = num_artigo + 1
+                    inserir_produto = input('Introduza o código do produto desejado.\n')
+                    if db.check_code(inserir_produto):
+                        print(db.get_elem_as_str(inserir_produto))
+                        quantidade = int(input('Qual a quantidade que deseja?\n'))
+                        preco = quantidade * (i['Price'])
+                        soma = (soma + (quantidade * i['Price']))
+                        contagem = contagem + quantidade
+                        artigos = {}
+                        index = index + 1
+                        artigos['Index'] = index
+                        now = datetime.datetime.now()
+                        data = now.strftime('%H:%M:%S %d-%m-%Y')
+                        artigos['Date'] = data
+                        artigos['Code'] = i['Code']
+                        artigos['Name'] = i['Name']
+                        artigos['Quanti'] = quantidade
+                        artigos['Price'] = (quantidade * i['Price'])
+                        orcamento.append(artigos)
+                        print('Inserido com sucesso.\n')
+                        print(' Resumo do orçamento:', contagem, 'artigos.\n', 'Total do orçamento:', soma, '€\n')
+                        num_artigo = num_artigo + 1
 
                 elif user_input_1_1 == 2:    #Inserir multi-artigos
                     print('Inserir artigos múltiplos\n')
@@ -253,7 +221,7 @@ while iniciar != 3:
 
                     while quantidade_items > 0 and continuar != 2:  
                         print('Artigo', num_artigo, '\n')
-                        inserir_produto = int(input('Introduza o código do produto desejado.\n'))
+                        inserir_produto = input('Introduza o código do produto desejado.\n')
                         for i in dados:
                             if inserir_produto == i['Code']:
                                 print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')
@@ -303,7 +271,7 @@ while iniciar != 3:
                 user_input_1_2 = int(input('Qual a sua opção\n'))
 
                 if user_input_1_2 == 1:
-                    editar_produto = int(input('Insira o código do produto que pretende alterar.'))
+                    editar_produto = input('Insira o código do produto que pretende alterar.')
                     sair_editor = 0
                     while sair_editor != 1:
                         for edit in orcamento:
@@ -316,7 +284,7 @@ while iniciar != 3:
                                 """)
                                 for i in dados:
                                     print(' ', i['Code'], '   ', i['Name'], '   ', i['Price'], '\n')
-                                novo_produto = int(input('Insira o novo produto a substituir.'))
+                                novo_produto = input('Insira o novo produto a substituir.')
                                 for i in dados:
                                     if novo_produto == i['Code']:
                                         print(i['Code'], '          ', i['Name'], '          ', i['Price'], '\n')

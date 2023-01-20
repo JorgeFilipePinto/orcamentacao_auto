@@ -1,62 +1,22 @@
-[
-    {
-        "Code": 101111,
+{
+    "101111": {
         "Name": "Item1",
         "Price": 100
     },
-    {
-        "Code": 2222,
+    "3332": {
+        "Name": "Item3",
+        "Price": 1034
+    },
+    "1111": {
         "Name": "Item2",
         "Price": 102
     },
-    {
-        "Code": 3332,
-        "Name": "Item3",
-        "Price": 100
+    "1234": {
+        "Name": "aiuyfvduhjladiuadsgoyauildhaudgladubgilugal",
+        "Price": 20
     },
-    {
-        "Code": 4444,
-        "Name": "Item4",
-        "Price": 104
-    },
-    {
-        "Code": 5555,
-        "Name": "Item5",
-        "Price": 105
-    },
-    {
-        "Code": 6666,
-        "Name": "Item6",
-        "Price": 106
-    },
-    {
-        "Code": 7777,
-        "Name": "Item7",
-        "Price": 107
-    },
-    {
-        "Code": 8888,
-        "Name": "Item8",
-        "Price": 108.0
-    },
-    {
-        "Code": 9999,
-        "Name": "Item9",
-        "Price": 109.0
-    },
-    {
-        "Code": 10000,
-        "Name": "Item10",
-        "Price": 110.0
-    },
-    {
-        "Code": 11000,
-        "Name": "Item11",
-        "Price": 100
-    },
-    {
-        "Code": 199999,
-        "Name": "Teste4",
-        "Price": 1000.0
+    "4444": {
+        "Name": "xpto",
+        "Price": 20.0
     }
-]
+}
