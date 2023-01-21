@@ -13,8 +13,6 @@ class DataBaseManager:
         if self.check_code(code):
             return self._dados[code]
         return None
-        
-    
 
     def __str__(self):
         string = f' {"Code":8s}  |  {"Name":{self._max_name_size}s}  |  {"Price":6s}\n'
