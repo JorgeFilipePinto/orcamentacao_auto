@@ -16,10 +16,10 @@ def inicio():
     if supervisor == 0:
         print('1 - Gestão Base de Dados.')
         print('2 - Orçamentos.')
-        print('3 - Sair.\n')
+        print('0 - Sair.\n')
     else:
         print('2 - Orçamentos.')
-        print('3 - Sair.\n')
+        print('0 - Sair.\n')
 
 def menu_basedados():
     print("1 - Inserir novo artigo.")
@@ -27,17 +27,18 @@ def menu_basedados():
     print('3 - Eliminar artigo.')
     print('4 - Ver Base de dados.')
     print("5 - Guardar.")
-    print('6 - Sair.')
+    print('0 - Sair.')
 
 def menu_save():
     print('1 - Sim')
     print('2 - Não')
+    print('0 - Sair.')
 
 def menu():         #Menu principal
     print('1 - Inserir novo artigo no orçamento')
     print('2 - Editar artigos do orçamento')
     print('3 - Guardar / Editar orçamentos')
-    print('4 - Sair')
+    print('0 - Sair')
 
 def sub_menu():
     print('1 - Consultar Orçamentos.')
@@ -202,7 +203,7 @@ while iniciar != 3:
                         index = index + 1
                         artigos['Index'] = index
                         now = datetime.datetime.now()
-                        data = now.strftime('%H:%M:%S %d-%m-%Y')
+                        data = now.strftime('%d-%m-%Y')
                         artigos['Date'] = data
                         artigos['Code'] = i['Code']
                         artigos['Name'] = i['Name']

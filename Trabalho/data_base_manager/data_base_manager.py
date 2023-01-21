@@ -9,6 +9,13 @@ class DataBaseManager:
         self._max_name_size = 10
         self._dados = {}
 
+    def get_item(self, code):
+        if self.check_code(code):
+            return self._dados[code]
+        return None
+        
+    
+
     def __str__(self):
         string = f' {"Code":8s}  |  {"Name":{self._max_name_size}s}  |  {"Price":6s}\n'
         for key, value in self._dados.items():
