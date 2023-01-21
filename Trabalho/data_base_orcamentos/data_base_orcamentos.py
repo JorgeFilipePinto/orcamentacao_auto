@@ -16,7 +16,7 @@ class DataBaseOrcamentos:
 
     def new_name(self):
         time = datetime.datetime.now()
-        return time.strftime('%Y-%m-%d_%Hh-%Mm-%Ss') + '.json'
+        return 'orcamentos\\' + time.strftime('%Y-%m-%d_%Hh-%Mm-%Ss') + '.json'
         
 
     def import_dados(self):
