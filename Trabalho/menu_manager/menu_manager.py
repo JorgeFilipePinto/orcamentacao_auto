@@ -2,7 +2,12 @@ import os
 
 from enum import Enum
 
+<<<<<<< HEAD
 
+=======
+from data_base_manager.data_base_manager import DataBaseManager
+from data_base_orcamentos.data_base_orcamentos import DataBaseOrcamentos
+>>>>>>> Add Core
 
 class MenuCodes(Enum):
     EXIT = 0
@@ -28,10 +33,22 @@ class MenuCodes(Enum):
 class CoreApp:
 
     def __init__(self, store_db):
+<<<<<<< HEAD
         self.active_menu = MenuCodes.MAIN
         self.store_db = store_db
         self.orcamento_ativo = None
 
+=======
+        self.active_menu = MenuCodes.MAIN_MENU
+        self.store_db = store_db
+        self.orcamento_ativo = None
+
+    def run(self):
+        while self.active_menu != MenuCodes.EXIT:
+            self.next_menu()
+    
+
+>>>>>>> Add Core
     def delete_from_base_dados(self):
         pass
 
@@ -91,8 +108,17 @@ class CoreApp:
                 self.active_menu = MenuCodes.EDIT_ORCAMENTO
                 return
             if user_input == '3':
+<<<<<<< HEAD
                 for _, _, file_names in os.walk('orcamentos'):
                     print(file_names) # TODO improve
+=======
+                for path, _, file_names in os.walk('orcamentos'):
+                    for file in file_names:
+                        o = DataBaseOrcamentos(path+'/'+file)
+                        o.import_dados()
+                        o.calcutate_totals()
+                        print(o)
+>>>>>>> Add Core
                 return
             if user_input == '4':
                 self.delete_orcamento()
@@ -101,7 +127,11 @@ class CoreApp:
             return
 
         if self.active_menu == MenuCodes.ADD_ORCAMENTO:
+<<<<<<< HEAD
             self.orcamento_ativo = BaseDadosOrcamento()
+=======
+            self.orcamento_ativo = DataBaseOrcamentos()
+>>>>>>> Add Core
             self.print_menu_add_orcamento()
             user_input = input()
             if user_input == '0':
@@ -116,6 +146,11 @@ class CoreApp:
             if user_input == '3':
                 print(self.orcamento_ativo)
                 return
+<<<<<<< HEAD
+=======
+            print('Opção desconhecida!')
+            return
+>>>>>>> Add Core
         
         if self.active_menu == MenuCodes.EDIT_ORCAMENTO:
             self.print_menu_edit_orcamento()
@@ -132,6 +167,11 @@ class CoreApp:
             if user_input == '3':
                 print(self.store_db)
                 return
+<<<<<<< HEAD
+=======
+            print('Opção desconhecida!')
+            return
+>>>>>>> Add Core
 
 
     def print_main_menu(self):
@@ -147,7 +187,11 @@ class CoreApp:
         print('0 - Sair.\n')
 
     def print_main_menu_orcamento(self):
+<<<<<<< HEAD
         print('1 - Criar nove orçamento')
+=======
+        print('1 - Criar novo orçamento')
+>>>>>>> Add Core
         print('2 - Editar editar orçamento')
         print('3 - Ver orçamentos existentes')
         print('4 - Ver orçamento especifico')

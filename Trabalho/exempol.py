@@ -1,4 +1,4 @@
-
+'''
 from data_base_manager.data_base_manager import DataBaseManager
 from data_base_orcamentos.data_base_orcamentos import DataBaseOrcamentos
 
@@ -13,3 +13,13 @@ db.calcutate_totals()
 db.save()
 if not db.is_empty():
     print(db)
+'''
+
+from data_base_manager.data_base_manager import DataBaseManager
+from menu_manager.menu_manager import CoreApp
+
+store_db = DataBaseManager('base_de_dados/dados.json')
+store_db.import_dados()
+
+app = CoreApp(store_db)
+app.run()
