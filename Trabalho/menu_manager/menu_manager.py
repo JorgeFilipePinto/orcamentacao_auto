@@ -30,11 +30,18 @@ class CoreApp:
     
     def delete_from_base_dados(self):                                   #Eliminar elementos da base de dados
         del_db_code = input('Introduza o código do elemento a eliminar ou introduza 0 para sair: ')
-        if not del_db_code == '0':
-            self.store_db.remove(del_db_code)
-        else:
+        if del_db_code == '0':
             print('Cancelou a sua operação!')
             return
+        for path, _, file_names in os.walk('orcamentos'):
+            for file in file_names:
+                o = DataBaseOrcamentos(path+'/'+file)
+                o.import_dados()
+                if o.check_code(del_db_code):
+                    print(f'Este artigo encontra-se ativo no orçamento {file}! Impossível eliminar.')
+                    return
+        self.store_db.remove(del_db_code)
+            
 
     def add_to_base_dados(self):                                        #Inserir elementos da base de dados
         insert_db_code = input('\nIntroduza o código do artigo desejado:  ')
