@@ -168,10 +168,6 @@ class CoreApp:
                         o.calcutate_totals()
                         print(file)
                 return
-
-
-
-
             if user_input == '4':
                 pass
                 return
