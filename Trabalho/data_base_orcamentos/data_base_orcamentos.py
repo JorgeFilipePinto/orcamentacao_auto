@@ -96,9 +96,11 @@ class DataBaseOrcamentos:
         self.total_impostos = self.total * 0.23
 
     def _update_max_name_size(self):
-        self._max_name_size = max([len(elem["Name"]) for elem in self._dados_orcamento.values()])
+        if len(self._dados_orcamento) == 0:
+            self._max_name_size = 10
+            return
+        self._max_name_size = max([len(item["Name"]) for code, item in self._dados_orcamento.items()])
 
- 
     def __str__(self):
         string = f' {"Code":8s}  |  {"Name":{self._max_name_size}s}  |  {"Quantity":8s}  |  {"Price":6s}\n'
         string += '-'*(43+self._max_name_size)+'\n'

@@ -1,6 +1,7 @@
 
 import json
 
+
 class DataBaseManager:
 
     def __init__(self, ficheiro):
@@ -29,7 +30,10 @@ class DataBaseManager:
 
 
     def _update_max_name_size(self):
-        self._max_name_size = max([len(elem["Name"]) for elem in self._dados.values()])
+        if len(self._dados) == 0:
+            self._max_name_size = 10
+            return
+        self._max_name_size = max([len(item["Name"]) for code, item in self._dados.items()])
 
     def get_elem_as_str(self, code):
         if not self.check_code(code):
