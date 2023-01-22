@@ -66,7 +66,6 @@ class CoreApp:
             print('Cancelou a sua operação!')
             return
         
-
     def delete_from_orcamento(self):
         del_orcamento_code = input('Introduza o código do elemento a eliminar ou introduza 0 para sair: ')
         if not del_orcamento_code == '0':
@@ -238,7 +237,6 @@ class CoreApp:
 
             print('Opção desconhecida!')
                 
-
     def print_main_menu(self):                                          #Menu principal
         print('\n--MENU PRINCIPAL--')
         print('1 - Gestão de artigos.')
